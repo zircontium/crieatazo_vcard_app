@@ -1,10 +1,11 @@
 import React from 'react'
 import img from './qr.png';
 import ShareModal from './ShareModal';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-export default function CardView({download}) {
+export default function CardView({download, addCard}) {
     let location = useLocation();
+    const navigate = useNavigate();
   return (
     <div className='container p-3'>
         <ShareModal/>
@@ -19,12 +20,9 @@ export default function CardView({download}) {
                 </div>
                 
             </div>
-            {/* <div className='col-1'>
-                <button type="button" className="btn btn-info">Share <i className="bi bi-share"></i></button>
-            </div> */}
             <div className="card-body row">
                 <div className='col-3'>
-                <img  src={img} />
+                <img id="output" src={location.state.card.PROFILE_PIC} max-width="300" max-height="300"/>	
                 </div>
                 <div className='col-9'>
                 <h4 className="card-title">{location.state.card.FIRST_NAME} {location.state.card.LAST_NAME}</h4>
@@ -43,6 +41,9 @@ export default function CardView({download}) {
                     </ul>
                 </div>
             </div>
+            {/* <div className='p-3'>
+                <button type="button" className="btn btn-dark" onClick={()=>navigate("/addCard", {state:{location.state.card}})}><i class="bi bi-pencil"/>Edit</button>
+            </div> */}
         </div>
     </div>
   )

@@ -25,6 +25,7 @@ function App() {
       CARD_NAME: "test.vcf",
       FIRST_NAME: "Jhon",
       LAST_NAME: "Doe",
+      PROFILE_PIC: "",
       ORGANIZATION: "Crieatzo",
       JOB_TITLE: "SME",
       ORG_DEPARTMENT: "IT",

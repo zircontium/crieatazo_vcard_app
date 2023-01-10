@@ -10,12 +10,20 @@ export default function AddCardForm({addCard}) {
     const value = event.target.value;
     setInputs(values => ({...values, [name]: value}))
   }
+  const onFileChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.files[0];
+    let imageURL = URL.createObjectURL(value);
+    setInputs(values => ({...values, [name]: imageURL}))
+    console.log(imageURL);
+    //var image = document.getElementById('output');
+	  imageURL = URL.createObjectURL(value);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     navigate("/")
     addCard(inputs);
-    //alert(inputs);
   }
 
   return (
@@ -32,6 +40,8 @@ export default function AddCardForm({addCard}) {
             <input type="text" name="FIRST_NAME" onChange={handleChange} value={inputs.FIRST_NAME || ""}  className="form-control" id="exampleInputEmail1"/>
             <label>Last Name:</label>
             <input type="text" name="LAST_NAME" onChange={handleChange} value={inputs.LAST_NAME || ""} className="form-control" id="exampleInputEmail1"/>
+            <label>Profile Picture:</label>
+            <input type="file" name="PROFILE_PIC" onChange={onFileChange} accept="image/*"/>
           </div>
 
           <div className="container p-3">
